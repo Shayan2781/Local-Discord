@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane prefHeight="600.0" prefWidth="500.0" style="-fx-background-color: #424549;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.discord.ServerScene">
+   <children>
+      <Text fill="WHITE" layoutX="202.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Server">
+         <font>
+            <Font name="Arial Bold" size="31.0" />
+         </font>
+      </Text>
+      <AnchorPane layoutX="29.0" layoutY="69.0" prefHeight="504.0" prefWidth="441.0" style="-fx-background-color: #36393e; -fx-background-radius: 15;">
+         <children>
+            <ScrollPane fx:id="ResultSP" layoutX="13.0" layoutY="64.0" prefHeight="433.0" prefWidth="416.0" style="-fx-background-color: #36393e; -fx-border-color: #36393e;" styleClass="workspace-grid" stylesheets="@scrollBarStyle.css">
+               <content>
+                  <VBox fx:id="Container" prefHeight="434.0" prefWidth="404.0" style="-fx-background-color: #23272a;">
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding>
+                  </VBox>
+               </content>
+               <padding>
+                  <Insets top="7.0" />
+               </padding>
+            </ScrollPane>
+            <Button layoutX="13.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#ShowUsers" onMouseEntered="#ButtonEntered" onMouseExited="#ButtonExited" style="-fx-background-color: #36393e;" text="Users" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="74.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#ShowServers" onMouseEntered="#ButtonEntered" onMouseExited="#ButtonExited" style="-fx-background-color: #36393e;" text="Servers" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="143.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#ShowDirectChats" onMouseEntered="#ButtonEntered" onMouseExited="#ButtonExited" style="-fx-background-color: #36393e;" text="Direct Chates" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

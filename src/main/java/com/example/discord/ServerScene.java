@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 public class ServerScene implements Initializable {
     public VBox Container;
     public ScrollPane ResultSP;
-    Server server = new Server();
+    public static Server server = new Server();
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Container.setSpacing(10);

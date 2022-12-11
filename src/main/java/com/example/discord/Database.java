@@ -22,14 +22,6 @@ public class Database implements Serializable {
         users.add(user0);
         User user = new User();
         User user2 = new User();
-        User user3 = new User();
-        user3.id = 3;
-        user3.setUsername("Arshia");
-        user3.setPassword("Arshia1234");
-        user3.setStatus(2);
-        user3.setPic(null);
-        user3.setEmail("arshia@gmail.com");
-        user3.setNumber("09128033276");
         user2.id = 2;
         user2.setUsername("Sara1382");
         user2.setStatus(2);
@@ -37,6 +29,7 @@ public class Database implements Serializable {
         user2.setPassword("Sara1234");
         user2.setPic(null);
         user2.friendList.add(1);
+        user2.backGroundColor = "#a5c2f2";
         user.friendList.add(2);
         user.id = 1;
         user.setNumber("09365024646");
@@ -45,10 +38,10 @@ public class Database implements Serializable {
         user.setPassword("Shayan1234");
         user.setStatus(1);
         user.setPic("C:/Users/user/Desktop/Desk/- Java - Intelij/Discord/src/main/resources/com/example/discord/Pics/ProfileTest.jpg");
+        user.backGroundColor = "#000000";
         users.add(user);
         users.add(user2);
-        users.add(user3);
-        DirectChat directChat = new DirectChat(1, 3);
+        DirectChat directChat = new DirectChat(1, 2);
         directChat.id = 1;
         this.directChats.add(directChat);
         this.groupServers = new ArrayList<>();

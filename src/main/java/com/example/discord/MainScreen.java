@@ -334,6 +334,7 @@ public class MainScreen implements Initializable {
         if ( file != null){
             String path = file.getAbsolutePath();
             client.user.setPic(path);
+            client.user.setBg();
             updatePics();
             client.sendUpdateUser();
         }
@@ -385,8 +386,8 @@ public class MainScreen implements Initializable {
         }
         else{
             if ( !client.user.setNumber(NumberField.getText())){
-                UserError.setText("Invalid number");
-                UserError.setVisible(true);
+                NumberError.setText("Invalid number");
+                NumberError.setVisible(true);
                 return;
             }
             NumberError.setVisible(false);
@@ -1201,6 +1202,8 @@ public class MainScreen implements Initializable {
             EditServerNameButton.setStyle("-fx-background-color:  #555a63;");
             ServerNameEditButtonCounter++;
             EditServerNameDisplayer.setText(EditServerNameField.getText());
+            client.groupServer.name = EditServerNameDisplayer.getText();
+            client.sendUpdates();
             EditServerNameField.clear();
         }
     }
@@ -1308,7 +1311,7 @@ public class MainScreen implements Initializable {
             }
         }
         for ( VoiceChannel voiceChannel : client.groupServer.voiceChannels){
-            if ( SearchChannelInEditServer.getText().toLowerCase(Locale.ROOT).equals(voiceChannel.name)){
+            if ( SearchChannelInEditServer.getText().toLowerCase(Locale.ROOT).equals(voiceChannel.name.toLowerCase(Locale.ROOT))){
                 ChannelSearchResult.setText(SearchChannelInEditServer.getText());
                 ChannelSearchResulttab.setVisible(true);
                 SearchChannelInEditServer.clear();
@@ -1398,7 +1401,7 @@ public class MainScreen implements Initializable {
             text.setFill(Color.WHITE);
             hBox.getChildren().add(text);
             Button button = new Button("Accept");
-            button.setStyle("-fx-background-color:     #0da125");
+            button.setStyle("-fx-background-color: #0da125");
             button.setTextFill(Color.WHITE);
             button.setCursor(Cursor.HAND);
             button.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -1843,19 +1846,19 @@ public class MainScreen implements Initializable {
             ((Button) mouseEvent.getSource()).setStyle("-fx-background-color:  #555a63");
 
             for ( TextChannel textChannel : client.groupServer.textChannels){
-                if ( String.format("# " + SearchChannelInEditServer.getText().toLowerCase(Locale.ROOT)).equals(textChannel.name)){
-                    textChannel.name = "#" + NewChannelNamefield.getText();
-                    if ( client.inTextChannel != null && client.inTextChannel.name.equals(SearchChannelInEditServer.getText().toLowerCase(Locale.ROOT))){
-                        client.inTextChannel.name = "#" + NewChannelNamefield.getText();
+                if (ChannelSearchResult.getText().equals(textChannel.name)){
+                    textChannel.name = "# " + NewChannelNamefield.getText();
+                    if ( client.inTextChannel != null && client.inTextChannel.name.equals(ChannelSearchResult.getText().toLowerCase(Locale.ROOT))){
+                        client.inTextChannel.name = "# " + NewChannelNamefield.getText();
                     }
                     client.sendUpdates();
                     NewChannelNamefield.setVisible(false);
                 }
             }
             for ( VoiceChannel voiceChannel : client.groupServer.voiceChannels){
-                if ( SearchChannelInEditServer.getText().toLowerCase(Locale.ROOT).equals(voiceChannel.name)){
+                if ( ChannelSearchResult.getText().equals(voiceChannel.name)){
                     voiceChannel.name = NewChannelNamefield.getText();
-                    if ( client.inVoiceChannel != null && client.inVoiceChannel.name.equals(SearchChannelInEditServer.getText().toLowerCase(Locale.ROOT))){
+                    if ( client.inVoiceChannel != null && client.inVoiceChannel.name.equals(ChannelSearchResult.getText())){
                         client.inVoiceChannel.name = NewChannelNamefield.getText();
                     }
                     client.sendUpdates();
@@ -1870,18 +1873,20 @@ public class MainScreen implements Initializable {
     public void DeleteChannel(MouseEvent mouseEvent) {
         int index = -1;
         for ( TextChannel textChannel : client.groupServer.textChannels){
-            if ( String.format("# " + SearchChannelInEditServer.getText().toLowerCase(Locale.ROOT)).equals(textChannel.name)){
+            if (ChannelSearchResult.getText().equals(textChannel.name)){
                 index = client.groupServer.textChannels.indexOf(textChannel);
+                System.out.println("Found");
             }
         }
         if ( index != -1){
             client.groupServer.textChannels.remove(index);
+            System.out.println("Deleted");
             client.sendUpdates();
             ChannelSearchResulttab.setVisible(false);
             return;
         }
         for ( VoiceChannel voiceChannel : client.groupServer.voiceChannels){
-            if ( SearchChannelInEditServer.getText().toLowerCase(Locale.ROOT).equals(voiceChannel.name)){
+            if ( ChannelSearchResult.getText().equals(voiceChannel.name)){
                 index = client.groupServer.voiceChannels.indexOf(voiceChannel);
             }
         }
@@ -1891,6 +1896,7 @@ public class MainScreen implements Initializable {
             ChannelSearchResulttab.setVisible(false);
             return;
         }
+        ChannelSearchResulttab.setVisible(false);
     }
 
     public void PhoneClicked(MouseEvent mouseEvent) {

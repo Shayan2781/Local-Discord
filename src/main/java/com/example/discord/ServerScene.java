@@ -36,6 +36,7 @@ public class ServerScene implements Initializable {
     }
 
     public void ShowUsers(MouseEvent mouseEvent) {
+        server.database.loadDatabase();
         Container.getChildren().clear();
         HBox hbox1 = new HBox();
         hbox1.setPadding(new Insets(0, 0, 0, 8));
@@ -59,6 +60,7 @@ public class ServerScene implements Initializable {
     }
 
     public void ShowServers(MouseEvent mouseEvent) {
+        server.database.loadDatabase();
         Container.getChildren().clear();
         HBox hbox1 = new HBox();
         hbox1.setPadding(new Insets(0, 0, 0, 8));
@@ -80,6 +82,7 @@ public class ServerScene implements Initializable {
     }
 
     public void ShowDirectChats(MouseEvent mouseEvent) {
+        server.database.loadDatabase();
         Container.getChildren().clear();
         HBox hbox1 = new HBox();
         hbox1.setPadding(new Insets(0, 0, 0, 8));

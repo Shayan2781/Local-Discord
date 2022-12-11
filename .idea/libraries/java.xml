@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="java">
+    <CLASSES />
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$USER_HOME$/Downloads/Time4J-master/Time4J-master/base/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/Time4J-master/Time4J-master/base/src/test/java" />
+      <root url="file://$USER_HOME$/Downloads/Time4J-master/Time4J-master/sqlxml/src/main/java" />
+      <root url="file://$USER_HOME$/Downloads/Time4J-master/Time4J-master/sqlxml/src/test/java" />
+    </SOURCES>
+  </library>
+</component>

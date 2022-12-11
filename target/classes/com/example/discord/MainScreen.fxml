@@ -1,0 +1,972 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="650.0" prefWidth="900.0" style="-fx-background-color: #202225;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.discord.MainScreen">
+   <children>
+      <AnchorPane layoutX="229.0" layoutY="47.0" prefHeight="610.0" prefWidth="539.0" style="-fx-background-color: #36393f;">
+         <children>
+            <ImageView fitHeight="259.0" fitWidth="271.0" layoutX="134.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/StartaChat.jpg" />
+               </image>
+            </ImageView>
+            <Text fill="#6f747e" layoutX="138.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a chat and start your journey">
+               <font>
+                  <Font name="Arial" size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="MessageSection" layoutX="230.0" layoutY="46.0" prefHeight="610.0" prefWidth="540.0" style="-fx-background-color: #36393f;" visible="false">
+         <children>
+            <AnchorPane layoutX="-4.0" layoutY="2.0" prefHeight="33.0" prefWidth="546.0" style="-fx-background-color: #2f3136;">
+               <children>
+                  <Text fx:id="ChannelName" fill="WHITE" layoutX="22.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <ScrollPane fx:id="MessageSP" hbarPolicy="NEVER" layoutY="33.0" prefHeight="530.0" prefWidth="540.0" style="-fx-background-color: #36393f; -fx-border-color: #565656; -fx-border-width: 0 0 2 0;" styleClass="workspace-grid" stylesheets="@scrollBarStyle.css" vbarPolicy="ALWAYS">
+               <content>
+                  <VBox fx:id="MessageVBox" prefHeight="530.0" prefWidth="530.0" style="-fx-background-color: #36393f;">
+                     <padding>
+                        <Insets top="10.0" />
+                     </padding></VBox>
+               </content>
+            </ScrollPane>
+            <TextField fx:id="SendMessageField" layoutX="72.0" layoutY="573.0" onKeyPressed="#EnterToSend" prefHeight="28.0" prefWidth="395.0" promptText="Send message..." style="-fx-background-color: #202225; -fx-background-radius: 15; -fx-text-fill: white;" />
+            <Button layoutX="479.0" layoutY="574.0" mnemonicParsing="false" onMouseClicked="#SendMessage" style="-fx-background-color: #2f3136; -fx-background-radius: 10;" text="Send" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Circle fx:id="AttachFile" fill="DODGERBLUE" layoutX="41.0" layoutY="587.0" onMouseClicked="#SelectFileToSend" radius="19.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Circle>
+            <AnchorPane fx:id="Pinbar" layoutX="-1.0" layoutY="35.0" prefHeight="46.0" prefWidth="546.0" style="-fx-background-color: #2f3136; -fx-border-color: #565656; -fx-border-width: 0 0 2 0;" visible="false">
+               <children>
+                  <Circle fx:id="PinPic" fill="DODGERBLUE" layoutX="34.0" layoutY="22.0" radius="20.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text fx:id="PinUsername" fill="WHITE" layoutX="65.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="shayan2781" />
+                  <Text fx:id="PinContent" fill="WHITE" layoutX="178.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Content" wrappingWidth="306.45111083984375" />
+                  <Line endX="-0.20001220703125" endY="15.800048828125" layoutX="157.0" layoutY="14.0" startX="-0.20001220703125" stroke="#999999" />
+                  <ImageView fitHeight="21.0" fitWidth="20.0" layoutX="501.0" layoutY="11.0" onMouseClicked="#Unpin" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/unPinIcon.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="SongTab" layoutX="228.0" layoutY="47.0" prefHeight="610.0" prefWidth="539.0" style="-fx-background-color: #36393f;" visible="false">
+         <children>
+            <AnchorPane layoutX="44.0" layoutY="114.0" prefHeight="382.0" prefWidth="452.0" style="-fx-background-color: #2f3136; -fx-background-radius: 15;">
+               <children>
+                  <Text fill="WHITE" layoutX="173.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Music Player">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Text>
+                  <ImageView fitHeight="126.0" fitWidth="134.0" layoutX="163.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/MusicIcon.png" />
+                     </image>
+                  </ImageView>
+                  <ProgressBar fx:id="songProgress" layoutX="89.0" layoutY="298.0" prefHeight="12.0" prefWidth="271.0" progress="0.0" style="-fx-control-inner-background: #36393f; -fx-border-color: #36393f; -fx-text-box-border: white;" />
+                  <ImageView fx:id="SongPlayPause" fitHeight="28.0" fitWidth="29.0" layoutX="212.0" layoutY="258.0" onMouseClicked="#PlayPauseSong" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/Play.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="173.0" layoutY="258.0" onMouseClicked="#PreviousSong" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/Previous.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <ImageView fitHeight="28.0" fitWidth="29.0" layoutX="250.0" layoutY="258.0" onMouseClicked="#NextSong" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/Next.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </ImageView>
+                  <Text fx:id="SongName" fill="WHITE" layoutX="17.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Song Name" textAlignment="CENTER" wrappingWidth="414.67535400390614">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="188.0" layoutY="331.0" mnemonicParsing="false" onMouseClicked="#SelectSong" style="-fx-background-color: #202225;" text="Select song" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="766.0" layoutY="2.0" prefHeight="42.0" prefWidth="134.0">
+         <children>
+            <Line endY="16.99999237060547" layoutX="4.0" layoutY="21.0" startY="-18.200002670288086" />
+            <ImageView fx:id="RefreshButton" fitHeight="28.0" fitWidth="29.0" layoutX="53.0" layoutY="7.0" onMouseClicked="#RefreshEverything" onMouseEntered="#showName" onMouseExited="#dontShowName" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/Refresh.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Text fx:id="RefreshText" fill="WHITE" layoutX="14.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Refresh" visible="false" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ServerDetailsForMember" layoutX="258.0" layoutY="144.0" prefHeight="413.0" prefWidth="475.0" style="-fx-background-color: #202225; -fx-background-radius: 15;" visible="false">
+         <children>
+            <AnchorPane layoutX="11.0" layoutY="49.0" prefHeight="349.0" prefWidth="452.0" style="-fx-background-color: #2f3136; -fx-background-radius: 10;">
+               <children>
+                  <Circle fx:id="ServerDetailsPic" fill="DODGERBLUE" layoutX="54.0" layoutY="54.0" radius="38.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text fx:id="ServerDetailsName" fill="WHITE" layoutX="102.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Server name">
+                     <font>
+                        <Font name="Arial" size="18.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="151.0" layoutY="309.0" mnemonicParsing="false" onMouseClicked="#LeaveServer" prefHeight="26.0" prefWidth="150.0" style="-fx-background-color: d10000;" text="Leave" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Text fill="WHITE" layoutX="27.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add member">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="SearchToAddMemberField" layoutX="25.0" layoutY="143.0" prefHeight="26.0" prefWidth="318.0" promptText="Search username..." style="-fx-background-color: #202225; -fx-text-fill: white;" />
+                  <Button layoutX="372.0" layoutY="144.0" mnemonicParsing="false" onMouseClicked="#AddMemberSearchButtonClicked" style="-fx-background-color: #5f656e;" text="Search" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <AnchorPane fx:id="AddMemberSearchResult1" layoutX="26.0" layoutY="189.0" prefHeight="66.0" prefWidth="395.0" visible="false">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="222.0" spacing="7.0">
+                           <children>
+                              <Circle fx:id="AddMemberPic1" fill="DODGERBLUE" radius="23.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Text fx:id="AddMemberName1" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <Button fx:id="AddButton1" layoutX="362.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#AddMemberToServer" style="-fx-background-color: #0da125;" text="Add" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <Button layoutX="425.0" layoutY="7.0" mnemonicParsing="false" onMouseClicked="#CloseServerDetailForMember" prefHeight="35.0" prefWidth="35.0" style="-fx-background-color: #2f3136; -fx-background-radius: 25;" text="X" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="231.0" layoutY="2.0" prefHeight="42.0" prefWidth="533.0" style="-fx-border-color: #565656; -fx-border-width: 0 0 2 0;">
+         <children>
+            <Text fill="WHITE" layoutX="35.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Friends" textAlignment="CENTER" wrappingWidth="85.60001220703123">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="21.0" fitWidth="19.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/Friends-Icon.png" />
+               </image>
+            </ImageView>
+            <Line endX="20.0" layoutX="120.0" layoutY="22.0" rotate="90.0" stroke="WHITE" />
+            <Button fx:id="OnlineFriends" layoutX="151.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#ShowOnlineFriends" onMouseEntered="#MouseEnteredFriendButton" onMouseExited="#MouseExitedFriendButton" style="-fx-background-radius: 5; -fx-background-color: transparent;" text="Online" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="422.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#OpenAddFriendTab" style="-fx-background-radius: 5; -fx-background-color: #0da125;" text="Search User" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="FriendRequests" layoutX="267.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#ShowFriendRequests" onMouseEntered="#MouseEnteredFriendButton" onMouseExited="#MouseExitedFriendButton" style="-fx-background-radius: 5; -fx-background-color: transparent;" text="Requests" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="AllFriends" layoutX="223.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#showAllFriends" onMouseEntered="#MouseEnteredFriendButton" onMouseExited="#MouseExitedFriendButton" style="-fx-background-radius: 5; -fx-background-color: transparent;" text="All" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="FriendBlocked" layoutX="345.0" layoutY="8.0" mnemonicParsing="false" onMouseClicked="#ShowBlocked" onMouseEntered="#MouseEnteredFriendButton" onMouseExited="#MouseExitedFriendButton" style="-fx-background-radius: 5; -fx-background-color: transparent;" text="Blocked" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ChatsSection" layoutX="75.0" prefHeight="596.0" prefWidth="155.0" style="-fx-background-color: #2f3136; -fx-background-radius: 20 0 0 0;">
+         <children>
+            <ScrollPane hbarPolicy="NEVER" layoutY="67.0" prefHeight="529.0" prefWidth="155.0" style="-fx-background-color: #2f3136; -fx-border-color: #2f3136;" styleClass="workspace-grid" stylesheets="@scrollBarStyle.css">
+               <content>
+                  <VBox fx:id="ChatNames" prefHeight="530.0" prefWidth="140.0" spacing="7.0" style="-fx-background-color: #2f3136;" />
+               </content>
+            </ScrollPane>
+            <Text fx:id="ChatSectionTitle" fill="WHITE" layoutX="14.0" layoutY="39.0" onMouseClicked="#ShowServerDetails" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="105.86203002929688">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+            <Line endX="54.600006103515625" endY="7.62939453125E-6" layoutX="64.0" layoutY="64.0" startX="-28.599998474121094" startY="7.62939453125E-6" stroke="#565656" />
+            <Text fx:id="AddChat" fill="WHITE" layoutX="128.0" layoutY="41.0" onMouseClicked="#AddChatClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="+" visible="false">
+               <font>
+                  <Font name="Arial" size="21.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+            <Text fx:id="ThereAreNoChats" fill="#b5b9c7" layoutX="11.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="There are no chats" textAlignment="CENTER" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="AddDirectChat" fill="WHITE" layoutX="128.0" layoutY="41.0" onMouseClicked="#AddDirectChatsClicked" strokeType="OUTSIDE" strokeWidth="0.0" text="+" visible="false">
+               <font>
+                  <Font name="Arial" size="21.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="UserSettingBar" layoutX="75.0" layoutY="596.0" prefHeight="60.0" prefWidth="155.0" style="-fx-background-color: #2f3136; -fx-border-color: #282b30; -fx-border-width: 1 0 0 0;">
+         <children>
+            <ImageView fitHeight="26.0" fitWidth="20.0" layoutX="126.0" layoutY="18.0" onMouseClicked="#OpenSetting" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/SettingIcon.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Circle fx:id="PfpHolder" fill="#9c9c9c" layoutX="35.0" layoutY="28.0" onMouseClicked="#SetStatusVisible" radius="22.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fx:id="StatusShape" fill="#7d8b99" layoutX="49.0" layoutY="42.0" radius="9.0" stroke="#36393e" strokeType="INSIDE" strokeWidth="3.0" />
+            <ImageView fx:id="MuteIcon" fitHeight="26.0" fitWidth="21.0" layoutX="65.0" layoutY="17.0" onMouseClicked="#MuteUnmute" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/Mute.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <AnchorPane fx:id="SetStatus" layoutX="39.0" layoutY="-78.0" opacity="0.85" prefHeight="112.0" prefWidth="88.0" style="-fx-background-color: #282b30; -fx-background-radius: 10;" visible="false">
+               <children>
+                  <Circle fill="#13d931" layoutX="16.0" layoutY="14.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                  <Circle fill="#7d8b99" layoutX="16.0" layoutY="40.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                  <Circle fill="#ffd300" layoutX="16.0" layoutY="66.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                  <Text fill="WHITE" layoutX="30.0" layoutY="19.0" onMouseClicked="#SetStatusOnline" strokeType="OUTSIDE" strokeWidth="0.0" text="Online">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Text>
+                  <Text fill="WHITE" layoutX="30.0" layoutY="44.0" onMouseClicked="#SetStatusOffline" strokeType="OUTSIDE" strokeWidth="0.0" text="Offline">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Text>
+                  <Text fill="WHITE" layoutX="30.0" layoutY="70.0" onMouseClicked="#SetStatusIdle" strokeType="OUTSIDE" strokeWidth="0.0" text="Idle">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Text>
+                  <Text fill="WHITE" layoutX="30.0" layoutY="96.0" onMouseClicked="#SetStatusDisturb" strokeType="OUTSIDE" strokeWidth="0.0" text="Don't Disturb">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Text>
+                  <Circle fill="#ec0202" layoutX="16.0" layoutY="92.0" radius="8.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+               </children>
+            </AnchorPane>
+            <ImageView fx:id="CallIcon" fitHeight="23.0" fitWidth="20.0" layoutX="95.0" layoutY="17.0" onMouseClicked="#PhoneClicked" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Pics/PhoneIcon.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Rectangle fx:id="PrivateMessages" arcHeight="50.0" arcWidth="50.0" fill="DODGERBLUE" height="44.0" layoutX="11.0" layoutY="10.0" onMouseClicked="#DirectMessagesClicked" onMouseEntered="#makePicSquare" onMouseExited="#makePicCircle" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="44.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <ScrollPane hbarPolicy="NEVER" hmax="4.0" layoutX="-3.0" layoutY="69.0" prefHeight="518.0" prefWidth="70.0" style="-fx-background-color: #202225; -fx-border-color: #202225;" styleClass="workspace-grid" stylesheets="@scrollBarStyle.css">
+         <content>
+            <VBox fx:id="ListServers" alignment="TOP_CENTER" prefHeight="514.0" prefWidth="55.0" style="-fx-background-color: #202225;">
+               <padding>
+                  <Insets top="8.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <Line endX="23.00000762939453" endY="7.62939453125E-6" layoutX="33.0" layoutY="64.0" startX="-23.699993133544922" startY="7.62939453125E-6" stroke="#565656" />
+      <Line endX="23.00000762939453" endY="7.62939453125E-6" layoutX="35.0" layoutY="597.0" startX="-23.699993133544922" startY="7.62939453125E-6" stroke="#565656" />
+      <Rectangle fx:id="AddServer" arcHeight="50.0" arcWidth="50.0" fill="#2f3136" height="44.0" layoutX="13.0" layoutY="602.0" onMouseClicked="#ShowServerOptions" onMouseEntered="#makePicSquare" onMouseExited="#makePicCircle" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="44.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Rectangle>
+      <AnchorPane fx:id="FriendsTab" layoutX="230.0" layoutY="48.0" prefHeight="606.0" prefWidth="534.0" style="-fx-background-color: #36393f;" visible="false">
+         <children>
+            <Text fx:id="FriendTitle" fill="WHITE" layoutX="14.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Friends">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </Text>
+            <Line endX="20.0" layoutX="115.0" layoutY="42.0" startX="-100.0" stroke="WHITE" />
+            <ScrollPane hbarPolicy="NEVER" layoutY="45.0" prefHeight="560.0" prefWidth="534.0" style="-fx-background-color: #36393f; -fx-border-color: #36393f;" styleClass="workspace-grid" stylesheets="@scrollBarStyle.css" vbarPolicy="ALWAYS">
+               <content>
+                  <VBox fx:id="ListFriend" prefHeight="571.0" prefWidth="522.0" spacing="12.0" style="-fx-background-color: #36393f;">
+                     <padding>
+                        <Insets top="8.0" />
+                     </padding>
+                  </VBox>
+               </content>
+            </ScrollPane>
+            <AnchorPane fx:id="NoFriendsTab" layoutY="43.0" prefHeight="560.0" prefWidth="540.0" style="-fx-background-color: #36393f;">
+               <children>
+                  <ImageView fitHeight="215.0" fitWidth="318.0" layoutX="107.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Pics/NoFriends.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="NoFriendsText" fill="#79808c" layoutX="69.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" textAlignment="CENTER" wrappingWidth="394.6754150390625">
+                     <font>
+                        <Font name="Arial" size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <Button layoutX="481.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#CloseFriendsTabOnCLick" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #282b30; -fx-background-radius: 25;" text="X" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="SearchUserTab" layoutX="244.0" layoutY="154.0" prefHeight="285.0" prefWidth="504.0" style="-fx-background-color: #2f3136; -fx-background-radius: 15;" visible="false">
+         <children>
+            <AnchorPane layoutX="13.0" layoutY="53.0" prefHeight="218.0" prefWidth="475.0" style="-fx-background-color: #36393f; -fx-background-radius: 15;">
+               <children>
+                  <Button fx:id="AddFriendSearchButton" layoutX="398.0" layoutY="21.0" mnemonicParsing="false" onMouseClicked="#UserSearchButtonClicked" prefHeight="26.0" prefWidth="62.0" style="-fx-background-color: #5f646e;" text="Search" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <Text fill="WHITE" layoutX="28.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search user">
+               <font>
+                  <Font name="Arial" size="13.0" />
+               </font>
+            </Text>
+            <Line endX="20.0" layoutX="114.0" layoutY="41.0" startX="-100.0" stroke="WHITE" />
+            <TextField fx:id="SearchUserField" layoutX="28.0" layoutY="75.0" prefHeight="26.0" prefWidth="354.0" promptText="Search username..." style="-fx-background-color: #202225; -fx-text-fill: white;" />
+            <HBox fx:id="AddFriendResult" alignment="CENTER_LEFT" layoutX="28.0" layoutY="136.0" prefHeight="88.0" prefWidth="256.0" spacing="10.0" visible="false">
+               <children>
+                  <Circle fx:id="UserSearchResultPic" fill="WHITE" radius="31.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text fx:id="UserSearchResultName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Users name">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <Button fx:id="BlockButton" layoutX="435.0" layoutY="167.0" mnemonicParsing="false" onMouseClicked="#BlockUser" style="-fx-background-color: #df0303;" text="Block" textFill="WHITE" visible="false">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="FriendRequestButton" layoutX="285.0" layoutY="167.0" mnemonicParsing="false" onMouseClicked="#SendFriendReq" style="-fx-background-color: #0da125;" text="Send Friend Request" textFill="WHITE" visible="false">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Text fx:id="NoResultUserText" fill="#7e838c" layoutX="179.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No results were found" visible="false">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="NoResultUserPic" fitHeight="126.0" fitWidth="246.0" layoutX="134.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@Pics/NoResult.png" />
+               </image>
+            </ImageView>
+            <Button layoutX="445.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#CloseSearchUserTab" prefHeight="40.0" prefWidth="40.0" style="-fx-background-color: #36393f; -fx-background-radius: 25;" text="x" textFill="WHITE">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <ScrollPane hbarPolicy="NEVER" layoutX="766.0" layoutY="47.0" prefHeight="610.0" prefWidth="134.0" style="-fx-background-color: #36393f; -fx-border-color: #36393f;" styleClass="workspace-grid" stylesheets="@scrollBarStyle.css">
+         <content>
+            <VBox fx:id="ChatOnlines" prefHeight="607.0" prefWidth="119.0" style="-fx-background-color: #36393f; -fx-border-color: black; -fx-border-width: 0 0 0 0.5;">
+               <padding>
+                  <Insets top="5.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <AnchorPane fx:id="SettingTab" layoutX="228.0" layoutY="46.0" prefHeight="606.0" prefWidth="672.0" style="-fx-background-color: #36393f;" visible="false">
+         <children>
+            <AnchorPane layoutX="84.0" layoutY="63.0" prefHeight="464.0" prefWidth="503.0" style="-fx-background-color: #282b30; -fx-background-radius: 20;">
+               <children>
+                  <Rectangle fx:id="BackGroundUser" arcHeight="15.0" arcWidth="15.0" fill="RED" height="86.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="504.0" />
+                  <Circle fx:id="SettingPfp" fill="DODGERBLUE" layoutX="73.0" layoutY="106.0" onMouseEntered="#EditVisible" onMouseExited="#EditInvisible" radius="49.0" stroke="#282b30" strokeType="INSIDE" strokeWidth="7.0" />
+                  <Circle fx:id="EditCircle" layoutX="73.0" layoutY="106.0" onMouseEntered="#EditVisible" opacity="0.53" radius="42.0" stroke="#282b30" strokeType="INSIDE" strokeWidth="0.0" />
+                  <Text fx:id="EditPic" fill="WHITE" layoutX="42.0" layoutY="110.0" onMouseClicked="#ChangeProfilePic" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Picture">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Text>
+                  <ColorPicker fx:id="ColorPicker" layoutX="401.0" layoutY="50.0" onAction="#ChangeBackground" prefHeight="26.0" prefWidth="88.0" promptText="Change Color" style="-fx-background-color: #7d8b99;">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></ColorPicker>
+                  <Text fx:id="UsernameTxt" fill="#d7d7d7" layoutX="137.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username" wrappingWidth="297.60005493164056">
+                     <font>
+                        <Font name="Arial" size="24.0" />
+                     </font>
+                  </Text>
+                  <AnchorPane layoutX="14.0" layoutY="169.0" prefHeight="278.0" prefWidth="475.0" style="-fx-background-color: #36393e; -fx-background-radius: 10;">
+                     <children>
+                        <Text fill="#d9d9d9" layoutX="20.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USERNAME">
+                           <font>
+                              <Font name="Arial Bold" size="11.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#d9d9d9" layoutX="20.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMAIL">
+                           <font>
+                              <Font name="Arial Bold" size="11.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#d9d9d9" layoutX="20.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD">
+                           <font>
+                              <Font name="Arial Bold" size="11.0" />
+                           </font>
+                        </Text>
+                        <Text fill="#d9d9d9" layoutX="20.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NUMBER">
+                           <font>
+                              <Font name="Arial Bold" size="11.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="UserUsername" fill="WHITE" layoutX="20.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USERNAME">
+                           <font>
+                              <Font name="Arial" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="UserPass" fill="WHITE" layoutX="20.0" layoutY="114.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PASSWORD">
+                           <font>
+                              <Font name="Arial" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="UserEmail" fill="WHITE" layoutX="20.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="EMAIL">
+                           <font>
+                              <Font name="Arial" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="UserNumber" fill="WHITE" layoutX="20.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="NUMBER">
+                           <font>
+                              <Font name="Arial" size="13.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="EditUserButton" layoutX="411.0" layoutY="28.0" mnemonicParsing="false" onMouseClicked="#EditUsername" style="-fx-background-color: #424549;" text="Edit" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="EditNumButton" layoutX="411.0" layoutY="225.0" mnemonicParsing="false" onMouseClicked="#EditNumber" style="-fx-background-color: #424549;" text="Edit" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="EditMailButton" layoutX="411.0" layoutY="155.0" mnemonicParsing="false" onMouseClicked="#EditEmail" style="-fx-background-color: #424549;" text="Edit" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="EditPassButton" layoutX="411.0" layoutY="91.0" mnemonicParsing="false" onMouseClicked="#EditPassword" style="-fx-background-color: #424549;" text="Edit" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <TextField fx:id="UserField" layoutX="20.0" layoutY="40.0" prefHeight="26.0" prefWidth="161.0" style="-fx-background-color: #282b30; -fx-text-fill: white;" />
+                        <TextField fx:id="PassField" layoutX="20.0" layoutY="103.0" prefHeight="26.0" prefWidth="161.0" style="-fx-background-color: #282b30; -fx-text-fill: white;" />
+                        <TextField fx:id="NumberField" layoutX="20.0" layoutY="239.0" prefHeight="26.0" prefWidth="161.0" style="-fx-background-color: #282b30; -fx-text-fill: white;" />
+                        <TextField fx:id="EmailField" layoutX="20.0" layoutY="167.0" prefHeight="26.0" prefWidth="246.0" style="-fx-background-color: #282b30; -fx-text-fill: white;" />
+                        <Text fx:id="UserError" fill="#ef0000" layoutX="193.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error">
+                           <font>
+                              <Font name="Arial" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="PasswordError" fill="#ef0000" layoutX="193.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error">
+                           <font>
+                              <Font name="Arial" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="EmailError" fill="#ef0000" layoutX="275.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error">
+                           <font>
+                              <Font name="Arial" size="13.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="NumberError" fill="#ef0000" layoutX="193.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Error">
+                           <font>
+                              <Font name="Arial" size="13.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <Button layoutX="597.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#CloseSettingOnClick" prefHeight="38.0" prefWidth="38.0" style="-fx-background-color: #282b30; -fx-background-radius: 25;" text="X" textFill="WHITE">
+               <font>
+                  <Font name="Arial" size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button layoutX="247.0" layoutY="545.0" mnemonicParsing="false" onMouseClicked="#LogOutClicked" prefHeight="26.0" prefWidth="178.0" style="-fx-background-color: #e10000;" text="Exit App" textFill="WHITE">
+               <effect>
+                  <DropShadow height="14.04" radius="5.92" spread="0.27" width="11.64">
+                     <color>
+                        <Color red="0.17894737422466278" green="0.1756335347890854" blue="0.1756335347890854" />
+                     </color>
+                  </DropShadow>
+               </effect>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="NewServerTab" layoutX="231.0" layoutY="47.0" prefHeight="606.0" prefWidth="666.0" style="-fx-background-color: #36393f;" visible="false">
+         <children>
+            <AnchorPane layoutX="63.0" layoutY="147.0" prefHeight="278.0" prefWidth="540.0" style="-fx-background-color: #282b30; -fx-background-radius: 20;">
+               <children>
+                  <AnchorPane layoutX="24.0" layoutY="56.0" prefHeight="158.0" prefWidth="492.0" style="-fx-background-color: #36393e; -fx-background-radius: 15;">
+                     <children>
+                        <TextField fx:id="NewServerName" layoutX="126.0" layoutY="66.0" style="-fx-background-color: #282b30; -fx-text-fill: white;" />
+                     </children>
+                  </AnchorPane>
+                  <Circle fx:id="NewServerPfp" fill="DODGERBLUE" layoutX="78.0" layoutY="123.0" onMouseEntered="#EditVisible1" onMouseExited="#EditInvisible1" radius="48.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Circle fx:id="EditCircle1" layoutX="78.0" layoutY="123.0" onMouseEntered="#EditVisible1" onMouseExited="#EditInvisible1" opacity="0.53" radius="48.0" stroke="#282b30" strokeType="INSIDE" strokeWidth="0.0" />
+                  <Text fx:id="SetNewServerPic" fill="WHITE" layoutX="47.0" layoutY="127.0" onMouseClicked="#ChangeServerProfilePic" onMouseEntered="#EditVisible1" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Picture">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Text>
+                  <Text fill="WHITE" layoutX="151.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create a new Server" wrappingWidth="237.86196899414062">
+                     <font>
+                        <Font name="Arial" size="25.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="151.0" layoutY="112.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Server name">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="CancelServerMaker" layoutX="310.0" layoutY="236.0" mnemonicParsing="false" onMouseClicked="#CancelServerMaking" prefHeight="28.0" prefWidth="78.0" style="-fx-background-color: #424549;" text="Cancel" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="SaveServerMaker" layoutX="406.0" layoutY="236.0" mnemonicParsing="false" onMouseClicked="#SaveServerMaking" prefHeight="28.0" prefWidth="78.0" style="-fx-background-color: #7289da;" text="Save" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ServerOptions" layoutX="35.0" layoutY="555.0" prefHeight="56.0" prefWidth="106.0" style="-fx-background-color: #36393f; -fx-background-radius: 5;" visible="false">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#CreateServer" onMouseEntered="#MouseEnteredServerAddButton" onMouseExited="#MouseExitedServerAddButton" prefHeight="26.0" prefWidth="106.0" style="-fx-background-color: transparent;" text="Create a Server" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button layoutY="27.0" mnemonicParsing="false" onMouseClicked="#OpenJoinServer" onMouseEntered="#MouseEnteredServerAddButton" onMouseExited="#MouseExitedServerAddButton" prefHeight="26.0" prefWidth="106.0" style="-fx-background-color: transparent;" text="Join a  Server" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="JoinServerTab" layoutX="231.0" layoutY="46.0" prefHeight="610.0" prefWidth="672.0" style="-fx-background-color: #36393f;" visible="false">
+         <children>
+            <AnchorPane layoutX="66.0" layoutY="134.0" prefHeight="341.0" prefWidth="540.0" style="-fx-background-color: #282b30; -fx-background-radius: 20;">
+               <children>
+                  <AnchorPane layoutX="24.0" layoutY="56.0" prefHeight="270.0" prefWidth="492.0" style="-fx-background-color: #36393e; -fx-background-radius: 15;">
+                     <children>
+                        <TextField fx:id="SearchServerField" layoutX="25.0" layoutY="14.0" prefHeight="26.0" prefWidth="298.0" promptText="Search..." style="-fx-background-color: #202225; -fx-text-fill: white;" />
+                        <Button layoutX="384.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#SearchServerButtonClicked" style="-fx-background-color: #2f3136;" text="Search" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Text fx:id="NoResultServerText" fill="#7e838c" layoutX="173.0" layoutY="233.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No results were found" visible="false">
+                           <font>
+                              <Font size="15.0" />
+                           </font>
+                        </Text>
+                        <ImageView fx:id="NoResultServerPic" fitHeight="144.0" fitWidth="256.0" layoutX="118.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@Pics/NoResult.png" />
+                           </image>
+                        </ImageView>
+                        <ScrollPane fx:id="ServerSearchScroll" hbarPolicy="NEVER" layoutX="20.0" layoutY="56.0" prefHeight="200.0" prefWidth="452.0" style="-fx-background-color: #36393e;" styleClass="workspace-grid" stylesheets="@scrollBarStyle.css" visible="false">
+                           <content>
+                              <VBox fx:id="ServerSearchResult" prefHeight="198.0" prefWidth="446.0" spacing="10.0" style="-fx-background-color: #36393e;" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+                  <Text fill="WHITE" layoutX="151.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Join a Server" textAlignment="CENTER" wrappingWidth="237.86196899414062">
+                     <font>
+                        <Font name="Arial" size="25.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="484.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#CloseJoinServer" prefHeight="39.0" prefWidth="39.0" style="-fx-background-color: #36393e; -fx-background-radius: 25;" text="X" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="ServerEditTab" layoutX="244.0" layoutY="48.0" prefHeight="597.0" prefWidth="503.0" style="-fx-background-color: #202225; -fx-background-radius: 20;" visible="false">
+         <children>
+            <AnchorPane layoutX="26.0" layoutY="46.0" prefHeight="550.0" prefWidth="452.0" style="-fx-background-color: #2f3136; -fx-background-radius: 15;">
+               <children>
+                  <Circle fx:id="EditServerPic" fill="DODGERBLUE" layoutX="58.0" layoutY="63.0" onMouseEntered="#EditVisible2" onMouseExited="#EditInvisible2" radius="44.0" stroke="BLACK" strokeType="INSIDE" />
+                  <Text fx:id="EditServerNameDisplayer" fill="WHITE" layoutX="118.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Server Name">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="EditServerNameButton" layoutX="368.0" layoutY="50.0" mnemonicParsing="false" onMouseClicked="#EditServerNameButtonClicked" style="-fx-background-color: #555a63;" text="Edit" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <TextField fx:id="EditServerNameField" layoutX="118.0" layoutY="52.0" prefHeight="26.0" prefWidth="178.0" style="-fx-background-color: #202225; -fx-text-fill: white;" visible="false" />
+                  <Circle fx:id="EditCircle2" layoutX="58.0" layoutY="63.0" onMouseEntered="#EditVisible2" onMouseExited="#EditInvisible2" opacity="0.53" radius="44.0" stroke="#282b30" strokeType="INSIDE" strokeWidth="0.0" visible="false" />
+                  <Text fx:id="EditServerPicText" fill="WHITE" layoutX="27.0" layoutY="67.0" onMouseClicked="#EditServerProfilePic" onMouseEntered="#EditVisible2" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Picture" visible="false">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Text>
+                  <Button layoutX="285.0" layoutY="514.0" mnemonicParsing="false" onMouseClicked="#CloseServerEditTab" prefHeight="20.0" prefWidth="56.0" style="-fx-background-color: #555a63;" text="Cancel" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="358.0" layoutY="514.0" mnemonicParsing="false" onMouseClicked="#SaveServerEdit" prefHeight="20.0" prefWidth="56.0" style="-fx-background-color: #7289da;" text="Save" textFill="WHITE">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Text fill="WHITE" layoutX="32.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit member">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="34.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit channel">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="SearchUserInEditServerField" layoutX="28.0" layoutY="149.0" prefHeight="26.0" prefWidth="346.0" promptText="Search username..." style="-fx-background-color: #202225; -fx-text-fill: white;" />
+                  <TextField fx:id="SearchChannelInEditServer" layoutX="28.0" layoutY="269.0" prefHeight="26.0" prefWidth="346.0" promptText="Search channel... (Without '#' )" style="-fx-background-color: #202225; -fx-text-fill: white;" />
+                  <Button fx:id="SearchUsernameInServerEditbutton" layoutX="388.0" layoutY="149.0" mnemonicParsing="false" onMouseClicked="#SearchUsernameInServerEditbuttonClicked" style="-fx-background-color: #555a63;" text="Search" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="SearchChannelInServerEditbutton" layoutX="388.0" layoutY="269.0" mnemonicParsing="false" onMouseClicked="#SearchChannelInServerEditbuttonClicked" style="-fx-background-color: #555a63;" text="Search" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <AnchorPane fx:id="SearchUsernameResult" layoutX="26.0" layoutY="175.0" prefHeight="66.0" prefWidth="395.0" visible="false">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="222.0" spacing="7.0">
+                           <children>
+                              <Circle fx:id="SearchedUserPic" fill="DODGERBLUE" radius="23.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Text fx:id="SearchedUserUsername" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <Button fx:id="KickMemberButton" layoutX="362.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#KickMemberButtonClicked" style="-fx-background-color: #d90202;" text="Kick" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="DemoteMemberButton" layoutX="297.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#DemoteMemberButtonClicked" style="-fx-background-color: #d90202;" text="Demote" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="PromoteMemberButton" layoutX="228.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#PromoteMemberButtonClicked" style="-fx-background-color: #0da125;" text="Promote" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <Button fx:id="DeleteServerButton" layoutX="14.0" layoutY="514.0" mnemonicParsing="false" onMouseClicked="#DeleteServer" style="-fx-background-color: #d10202;" text="Delete Server" textFill="WHITE" visible="false">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Text fill="WHITE" layoutX="34.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add member" />
+                  <TextField fx:id="AddUserField" layoutX="28.0" layoutY="391.0" prefHeight="26.0" prefWidth="346.0" promptText="Search username..." style="-fx-background-color: #202225; -fx-text-fill: white;" />
+                  <Button fx:id="AddUserSearchButton" layoutX="388.0" layoutY="391.0" mnemonicParsing="false" onMouseClicked="#SearchUsernameInServerEditbuttonClickedForAdd" style="-fx-background-color: #555a63;" text="Search" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <AnchorPane fx:id="AddMemberSearchResult" layoutX="26.0" layoutY="429.0" prefHeight="66.0" prefWidth="395.0" visible="false">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="66.0" prefWidth="222.0" spacing="7.0">
+                           <children>
+                              <Circle fx:id="AddMemberPic" fill="DODGERBLUE" radius="23.0" stroke="BLACK" strokeType="INSIDE" />
+                              <Text fx:id="AddMemberName" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Username">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </HBox>
+                        <Button fx:id="AddButton" layoutX="362.0" layoutY="20.0" mnemonicParsing="false" onMouseClicked="#AddMemberToServerEdit" style="-fx-background-color: #0da125;" text="Add" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="ChannelSearchResulttab" layoutX="42.0" layoutY="303.0" prefHeight="56.0" prefWidth="395.0" visible="false">
+                     <children>
+                        <Button fx:id="EditChannelNameButton" layoutX="284.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#EditChannelName" style="-fx-background-color: #555a63;" text="Edit" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Button layoutX="330.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#DeleteChannel" style="-fx-background-color: #d10202;" text="Delete" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                        <Text fx:id="ChannelSearchResult" fill="WHITE" layoutX="14.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Channel name" />
+                        <TextField fx:id="NewChannelNamefield" layoutX="14.0" layoutY="13.0" prefHeight="26.0" prefWidth="246.0" promptText="New name..." style="-fx-background-color: #202225; -fx-text-fill: white;" visible="false" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <Text fill="WHITE" layoutX="193.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Server">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="AddChannelTab" layoutX="214.0" layoutY="36.0" prefHeight="167.0" prefWidth="238.0" style="-fx-background-color: #202225; -fx-background-radius: 0 15 15 15;" visible="false">
+         <children>
+            <Text fill="WHITE" layoutX="79.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Channel" />
+            <AnchorPane layoutX="8.0" layoutY="32.0" prefHeight="126.0" prefWidth="222.0" style="-fx-background-color: #36393f; -fx-background-radius: 0 10 10 10;">
+               <children>
+                  <Text fill="WHITE" layoutX="18.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text Channel" />
+                  <Text fill="WHITE" layoutX="14.0" layoutY="79.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Voice Channel" />
+                  <TextField fx:id="AddTextChannelField" layoutX="15.0" layoutY="28.0" style="-fx-background-color: #202225; -fx-text-fill: white;" />
+                  <TextField fx:id="AddVoiceChannelField" layoutX="15.0" layoutY="88.0" style="-fx-background-color: #202225; -fx-text-fill: white;" />
+                  <Button layoutX="174.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#AddTextChannel" prefHeight="23.0" prefWidth="40.0" style="-fx-background-color: #0da125;" text="Add" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button layoutX="174.0" layoutY="88.0" mnemonicParsing="false" onMouseClicked="#AddVoiceChannel" prefHeight="23.0" prefWidth="40.0" style="-fx-background-color: #0da125;" text="Add" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+            <Button layoutX="205.0" layoutY="1.0" mnemonicParsing="false" onMouseClicked="#CloseAddChannelTab" prefHeight="22.0" prefWidth="22.0" style="-fx-background-color: #36393f; -fx-background-radius: 25;" text="X" textFill="WHITE">
+               <font>
+                  <Font size="9.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="AddDirectTab" layoutX="217.0" layoutY="37.0" prefHeight="167.0" prefWidth="238.0" style="-fx-background-color: #202225; -fx-background-radius: 0 10 10 10;" visible="false">
+         <children>
+            <AnchorPane layoutX="12.0" layoutY="10.0" prefHeight="145.0" prefWidth="214.0" style="-fx-background-color: #2f3136; -fx-background-radius: 10;">
+               <children>
+                  <TextField fx:id="AddDirectField" layoutX="10.0" layoutY="46.0" prefHeight="15.0" prefWidth="134.0" promptText="Search username..." style="-fx-background-color: #202225; -fx-text-fill: white;" />
+                  <Text fill="WHITE" layoutX="33.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start a new direct chat">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="154.0" layoutY="46.0" mnemonicParsing="false" onAction="#SearchDirectChatClicked" prefHeight="26.0" prefWidth="52.0" style="-fx-background-color: #36393f;" text="Search" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <AnchorPane fx:id="AddDirectResult" layoutX="7.0" layoutY="80.0" prefHeight="62.0" prefWidth="200.0" visible="false">
+                     <children>
+                        <Circle fx:id="NewDirectUserPic" fill="DODGERBLUE" layoutX="29.0" layoutY="31.0" radius="21.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Text fx:id="NewDirectUserName" fill="WHITE" layoutX="54.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="username" wrappingWidth="96.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Button layoutX="151.0" layoutY="16.0" mnemonicParsing="false" onAction="#NewDirectChat" prefHeight="27.0" prefWidth="42.0" style="-fx-background-color: #7289da;" text="Chat" textFill="WHITE">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <Button layoutX="198.0" layoutY="-4.0" mnemonicParsing="false" onAction="#CloseNewDirectChat" prefHeight="24.0" prefWidth="24.0" style="-fx-background-color: #36393f; -fx-background-radius: 25;" text="X" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
